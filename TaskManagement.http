@@ -1,0 +1,69 @@
+@TaskManagement_HostAddress = http://localhost:5288
+@Token = your_jwt_token_here
+
+### Register a new user
+POST {{TaskManagement_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123",
+  "firstName": "Test",
+  "lastName": "User"
+}
+
+### Login user
+POST {{TaskManagement_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Get current user info
+GET {{TaskManagement_HostAddress}}/api/auth/me
+Authorization: Bearer {{Token}}
+
+### Create a new task
+POST {{TaskManagement_HostAddress}}/api/tasks
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+
+{
+  "title": "Complete project documentation",
+  "description": "Write comprehensive documentation for the Task Management API",
+  "priority": 2,
+  "dueDate": "2024-12-31T23:59:59Z"
+}
+
+### Get all tasks
+GET {{TaskManagement_HostAddress}}/api/tasks
+Authorization: Bearer {{Token}}
+
+### Get filtered tasks
+GET {{TaskManagement_HostAddress}}/api/tasks/filtered?status=1&priority=2&page=1&pageSize=10
+Authorization: Bearer {{Token}}
+
+### Update a task
+PUT {{TaskManagement_HostAddress}}/api/tasks/1
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+
+{
+  "title": "Updated task title",
+  "status": 2
+}
+
+### Complete a task
+POST {{TaskManagement_HostAddress}}/api/tasks/1/complete
+Authorization: Bearer {{Token}}
+
+### Get overdue tasks
+GET {{TaskManagement_HostAddress}}/api/tasks/overdue
+Authorization: Bearer {{Token}}
+
+### Delete a task
+DELETE {{TaskManagement_HostAddress}}/api/tasks/1
+Authorization: Bearer {{Token}}
