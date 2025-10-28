@@ -40,7 +40,7 @@ The project follows a layered architecture pattern:
 - **AutoMapper**: Object-to-object mapping
 - **FluentValidation**: Input validation
 - **Swagger/OpenAPI**: API documentation
-- **SQL Server LocalDB**: Local database for development
+- **SQL Server LocalDB**: Local database for development (automatically created)
 
 ## Getting Started
 
@@ -211,11 +211,13 @@ The API returns appropriate HTTP status codes and error messages:
 6. **Add Validation**: Create validators in `Validators/`
 7. **Update Mappings**: Add AutoMapper profiles in `Mappings/`
 
-### Database Migrations
+### Database Setup
 
-The application uses Entity Framework Core migrations. The database will be automatically created when you first run the application.
+The application uses Entity Framework Core with automatic database creation. The database will be automatically created when you first run the application.
 
-If you need to create or update migrations manually:
+**Important**: The application uses `EnsureCreated()` which creates the database schema directly based on the current model. This approach bypasses migrations and creates the database from scratch each time.
+
+If you need to work with migrations manually:
 
 ```bash
 # Add new migration
@@ -228,4 +230,4 @@ dotnet ef database update
 dotnet ef migrations remove
 ```
 
-**Note**: The application uses `EnsureCreated()` which automatically creates the database and applies migrations on startup.
+**Note**: Current implementation uses `EnsureCreated()` for simplicity. For production environments, consider switching to `Migrate()` for proper migration support.
