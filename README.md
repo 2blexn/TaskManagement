@@ -217,17 +217,4 @@ The application uses Entity Framework Core with automatic database creation. The
 
 **Important**: The application uses `EnsureCreated()` which creates the database schema directly based on the current model. This approach bypasses migrations and creates the database from scratch each time.
 
-If you need to work with migrations manually:
-
-```bash
-# Add new migration
-dotnet ef migrations add <MigrationName>
-
-# Update database
-dotnet ef database update
-
-# Remove last migration
-dotnet ef migrations remove
-```
-
 **Note**: Current implementation uses `EnsureCreated()` for simplicity. For production environments, consider switching to `Migrate()` for proper migration support.
