@@ -137,7 +137,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Ensure database is created and apply migrations
+// Ensure database is created based on current model
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<TaskManagementContext>();
