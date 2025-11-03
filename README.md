@@ -2,20 +2,6 @@
 
 RESTful API for managing tasks built with .NET 8, Entity Framework Core, and JWT authentication. 
 
-## Features
-
-- **User Authentication & Authorization**: JWT-based authentication system
-- **Task Management**: Full CRUD operations for tasks
-- **Advanced Filtering**: Filter tasks by status, priority, due date, and search terms
-- **Pagination**: Efficient data retrieval with pagination support
-- **Data Validation**: Comprehensive input validation using FluentValidation
-- **AutoMapper**: Clean data mapping between DTOs and entities
-- **Repository Pattern**: Clean separation of data access logic
-- **Service Layer**: Business logic encapsulation following SOLID principles
-- **Swagger Documentation**: Interactive API documentation
-- **Local Development**: Easy setup for local development
-- **Database Migrations**: Entity Framework Core migrations
-
 ## Architecture
 
 The project follows a layered architecture pattern:
@@ -199,22 +185,6 @@ The API returns appropriate HTTP status codes and error messages:
 - `409 Conflict`: Resource already exists
 - `500 Internal Server Error`: Server error
 
-## Development
+## ERD (Database Diagram)
 
-### Adding New Features
-
-1. **Create Domain Model**: Add new entity in `Models/`
-2. **Create DTOs**: Add request/response DTOs in `DTOs/`
-3. **Create Repository**: Implement data access in `Repositories/`
-4. **Create Service**: Implement business logic in `Services/`
-5. **Create Controller**: Add API endpoints in `Controllers/`
-6. **Add Validation**: Create validators in `Validators/`
-7. **Update Mappings**: Add AutoMapper profiles in `Mappings/`
-
-### Database Setup
-
-The application uses Entity Framework Core with automatic database creation. The database will be automatically created when you first run the application.
-
-**Important**: The application uses `EnsureCreated()` which creates the database schema directly based on the current model. This approach bypasses migrations and creates the database from scratch each time.
-
-**Note**: Current implementation uses `EnsureCreated()` for simplicity. For production environments, consider switching to `Migrate()` for proper migration support.
+![Diagram.jpg](Diagram.jpg)
